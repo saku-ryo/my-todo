@@ -17,14 +17,14 @@ function addTodos(task) {
             console.log("JSONファイルが存在しません");
             return
         }
-       // uuidの生成
-        const uuid = uuidv4();
+       // idの生成
+        const id = uuidv4();
         // 日付のフォーマット
         const day = dayjs().format('YYYY-MM-DD HH:mm');
         // 未完了状態をセット
         const status = "未完了";
         // タスクを追加する情報をセット
-        todos.push({  uuid, task, day, status});
+        todos.push({ id, task, day, status});
         // タスクの情報をJSONファイルに保存
         fileManager.saveTodos(todos)
         console.log(chalk.green('タスクを追加しました！'));
@@ -41,9 +41,9 @@ function listTodos() {
     } else {
         todos.forEach((todos, index ) => {
             if (todos.status === "未完了")
-                console.log(chalk.white(index + 1 + ":" ,"ID:" + todos.uuid ,"タスク:" + todos.task,  "作成日時:" + todos.day , "状態：" + todos.status));
+                console.log(chalk.white(index + 1 + ":" ,"ID:" + todos.id ,"タスク:" + todos.task,  "作成日時:" + todos.day , "状態：" + todos.status));
             else 
-                console.log(chalk.gray(index + 1 + ":" ,"ID:" + todos.uuid ,"タスク:" + todos.task,  "作成日時:" + todos.day , "状態：" + todos.status));
+                console.log(chalk.gray(index + 1 + ":" ,"ID:" + todos.id ,"タスク:" + todos.task,  "作成日時:" + todos.day , "状態：" + todos.status));
         });
     }
 }
@@ -54,8 +54,8 @@ function doneTodos(id) {
     // JSONファイルを読込み
     const todos = fileManager.loadTodos();
 
-    // UUIDと入力されたIDを比較
-    const todo = todos.find( t => t.uuid === id);
+    // JSONに保存されたIDと入力されたIDを比較
+    const todo = todos.find( t => t.id === id);
 
     if (!todo) {
         console.log(chalk.red("指定されたIDは存在しません。"));
@@ -76,7 +76,7 @@ function deleteTodos(id) {
     // JSONファイルを読込み
     const todos = fileManager.loadTodos();
     // 引数で入力されたIDを検索し、データを取得
-    const delTodo = todos.filter(t => t.uuid !== id);
+    const delTodo = todos.filter(t => t.id !== id);
 
 
     if(todos.length === delTodo.length) {
