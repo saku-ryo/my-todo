@@ -77,6 +77,48 @@ function listTodos() {
     }
 }
 
+// done処理
+function doneTodos(id) {
+
+    // JSONファイルを読込み
+    const todos = loadTodos();
+
+    // UUIDと入力されたIDを比較
+    const todo = todos.find( t => t.uuid === id);
+
+    if (!todo) {
+        console.log(chalk.red("指定されたIDは存在しません。"));
+        return;
+    } 
+
+    // JSONファイルに書き込み
+    todo.status = "完了"
+    console.log(todos);
+    saveTodos(todos);
+    console.log(chalk.green("ステータスを更新しました"));
+
+}
+
+// 削除コマンド処理
+function deleteTodos(id) {
+
+    // JSONファイルを読込み
+    const todos = loadTodos();
+    // 引数で入力されたIDを検索し、データを取得
+    const delTodo = todos.filter(t => t.uuid !== id);
+
+
+    if(todos.length === delTodo.length) {
+        console.log(chalk.red("指定されたIDは存在しません。"));
+        return
+    }
+    //　データの保存
+    console.log(delTodo);
+    saveTodos(delTodo);
+    console.log(chalk.yellow("指定されたIDのデータを削除しました。"));
+
+}
+
 //　コマンド判別
 switch (command) {
 
@@ -88,5 +130,14 @@ switch (command) {
     case 'list':
         listTodos();
         break;
+
+            case 'done':
+        doneTodos(args.join());
+        break;
+
+    case 'delete':
+        deleteTodos(args.join());
+        break;
+
     default:
 }
