@@ -1,5 +1,5 @@
 import fs from 'fs';
-import * as common from './common.js'
+import * as commands from './commands.js'
 import * as fileManager  from './fileManager.js'
 import { program } from 'commander';
 
@@ -18,28 +18,28 @@ program
 program
     .command('add <task>')
     .action((task) => {
-        common.addTodos(task);
+        commands.addTodos(task);
     });
 
 // 引数：listの処理
 program
     .command('list')
     .action(() => {
-        common.listTodos();
+        commands.listTodos();
     });
 
 // 引数：done<id>の処理
 program
     .command('done <id>')
     .action((id) => {
-        common.doneTodos(id);
+        commands.doneTodos(id);
     });
 
 // 引数：delete<id>の処理
 program
     .command('delete <id>')
     .action((id) => {
-        common.deleteTodos(id);
+        commands.deleteTodos(id);
     });
 
 //引数の解析
