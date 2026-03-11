@@ -1,4 +1,3 @@
-import { program } from 'commander';
 import {v4 as uuidv4} from 'uuid';
 import dayjs from 'dayjs';
 import chalk from 'chalk';

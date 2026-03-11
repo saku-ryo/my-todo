@@ -1,35 +1,46 @@
 import fs from 'fs';
 import * as common from './common.js'
 import * as fileManager  from './fileManager.js'
+import { program } from 'commander';
 
 // 初期化
 if(!fs.existsSync(fileManager.FILE)) {
     fs.writeFileSync(fileManager.FILE,JSON.stringify([]));
 }
 
-
-// コマンド引数を取得
-const [,, command, ...args] = process.argv;
+//commanderの定義
+program
+    .version('1.0.0', '-v, --version')
+    .description('TODO管理ツール');
 
 //　コマンド判別
-switch (command) {
+// 引数：add<task>の処理
+program
+    .command('add <task>')
+    .action((task) => {
+        common.addTodos(task);
+    });
 
-    // addメソッドを実行
-    case 'add':
-        common.addTodos(args.join(""));
-        break;
-
-    case 'list':
+// 引数：listの処理
+program
+    .command('list')
+    .action(() => {
         common.listTodos();
-        break;
+    });
 
-            case 'done':
-        common.doneTodos(args.join());
-        break;
+// 引数：done<id>の処理
+program
+    .command('done <id>')
+    .action((id) => {
+        common.doneTodos(id);
+    });
 
-    case 'delete':
-        common.deleteTodos(args.join());
-        break;
+// 引数：delete<id>の処理
+program
+    .command('delete <id>')
+    .action((id) => {
+        common.deleteTodos(id);
+    });
 
-    default:
-}
+//引数の解析
+program.parse(process.argv);
