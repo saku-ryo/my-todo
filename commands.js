@@ -89,7 +89,4 @@ function deleteTodos(id) {
 
 }
 
-export {addTodos};
-export {listTodos};
-export {doneTodos};
-export {deleteTodos};
+module.exports = {addTodos, listTodos, doneTodos, deleteTodos};

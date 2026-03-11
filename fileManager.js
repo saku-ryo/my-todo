@@ -22,4 +22,4 @@ function saveTodos(todos) {
     fs.writeFileSync(FILE,JSON.stringify(todos,null,2));
 }
 
-module.exports = {FILE, loadTodos, saveTodos}
+module.exports = {FILE, loadTodos, saveTodos};
