@@ -1,5 +1,5 @@
-import fs from 'fs';
-import { json } from 'stream/consumers';
+const fs = require('fs');
+const { json } = require('stream/consumers');
 
 const FILE = './tasks.json';
 
@@ -22,6 +22,4 @@ function saveTodos(todos) {
     fs.writeFileSync(FILE,JSON.stringify(todos,null,2));
 }
 
-export {loadTodos};
-export {saveTodos};
-export {FILE};
+module.exports = {FILE, loadTodos, saveTodos};
