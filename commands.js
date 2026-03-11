@@ -63,7 +63,6 @@ function doneTodos(id) {
 
     // JSONファイルに書き込み
     todo.status = "完了"
-    console.log(todos);
     fileManager.saveTodos(todos);
     console.log(chalk.green("ステータスを更新しました"));
 
@@ -83,7 +82,6 @@ function deleteTodos(id) {
         return
     }
     //　データの保存
-    console.log(delTodo);
     fileManager.saveTodos(delTodo);
     console.log(chalk.yellow("指定されたIDのデータを削除しました。"));
 
