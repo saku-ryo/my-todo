@@ -1,9 +1,8 @@
-import { program } from 'commander';
-import {v4 as uuidv4} from 'uuid';
-import dayjs from 'dayjs';
-import chalk from 'chalk';
-
-import * as fileManager from './fileManager.js'
+const { program } = require( 'commander');
+const {v4 : uuidv4} = require('uuid');
+const dayjs = require('dayjs');
+const chalk = require('chalk');
+const fileManager = require('./fileManager');
 
 // addタスクの追加
 function addTodos(task) {
