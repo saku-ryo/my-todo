@@ -1,4 +1,3 @@
-const { program } = require( 'commander');
 const {v4 : uuidv4} = require('uuid');
 const dayjs = require('dayjs');
 const chalk = require('chalk');

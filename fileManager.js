@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { json } = require('stream/consumers');
 
 const FILE = './tasks.json';
 
