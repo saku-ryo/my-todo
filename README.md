@@ -11,7 +11,6 @@ node.jsを使用して、CLIタスク管理ツール「my-todo」を作成する
 1 対象のパッケージをインストールする
 npm install commander dayjs chalk@4 uuid@8
 2「.gitignore」 ファイルを作成し、「node_modules/」を追加する
-3 package.jsonに「 "type": "module",」を追加する
 
 ## 各コマンドの使用方法
 

@@ -1,7 +1,7 @@
 const fs = require('fs');
-const commands = require('./commands');
-const fileManager  = require('./fileManager');
-const { program } = require( 'commander');
+const commands = require('./commands')
+const fileManager  = require('./fileManager')
+const { program } = require( 'commander')
 
 // 初期化
 if(!fs.existsSync(fileManager.FILE)) {
