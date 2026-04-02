@@ -10,7 +10,7 @@ function loadTodos() {
     if(fileInfo.length <= 0 ) {
         return[];
     } else {
-      result =  JSON.parse(fileInfo);
+        result =  JSON.parse(fileInfo);
     }
     return result;
 }
