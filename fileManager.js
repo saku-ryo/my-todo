@@ -5,14 +5,21 @@ const FILE = './tasks.json';
 // タスクの読み込み
 function loadTodos() {
 
-    const fileInfo = fs.readFileSync(FILE,'utf8');
-    let result;
-    if(fileInfo.length <= 0 ) {
-        return[];
-    } else {
-      result =  JSON.parse(fileInfo);
+    try {
+        const fileInfo = fs.readFileSync(FILE,'utf8');
+        let result;
+
+        if(fileInfo.length <= 0 ) {
+            return[];
+        } else {
+            result =  JSON.parse(fileInfo);
+        }
+
+        return result;
+    } catch (e) {
+        console.log("データの読み込みに失敗しました。処理を終了します。" + e.message);
+        process.exit();
     }
-    return result;
 }
 
 // データの保存
