@@ -1,7 +1,7 @@
-const fs = require('fs');
-const commands = require('./commands')
+const fs = require('fs')
 const fileManager  = require('./fileManager')
 const { program } = require( 'commander')
+const { addTodos, listTodos, doneTodos, deleteTodos} = require('./commands')
 
 // 初期化
 if(!fs.existsSync(fileManager.FILE)) {
@@ -17,30 +17,24 @@ program
 // 引数：add<task>の処理
 program
     .command('add <task>')
-    .action((task) => {
-        commands.addTodos(task);
-    });
+    .action(addTodos);
+    
 
 // 引数：listの処理
 program
     .command('list')
-    .action(() => {
-        commands.listTodos();
-    });
+    .action(listTodos);
+    
 
 // 引数：done<id>の処理
 program
     .command('done <id>')
-    .action((id) => {
-        commands.doneTodos(id);
-    });
+    .action(doneTodos);
 
 // 引数：delete<id>の処理
 program
     .command('delete <id>')
-    .action((id) => {
-        commands.deleteTodos(id);
-    });
+    .action(deleteTodos);
 
 //引数の解析
 program.parse(process.argv);
