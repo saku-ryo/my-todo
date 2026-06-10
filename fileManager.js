@@ -2,11 +2,13 @@ const fs = require('fs');
 
 const FILE = './tasks.json';
 
+const CHARSET = 'utf8';
+
 // タスクの読み込み
 function loadTodos() {
 
     try {
-        const fileInfo = fs.readFileSync(FILE,'utf8');
+        const fileInfo = fs.readFileSync(FILE,CHARSET);
         let result;
 
         if(fileInfo.length <= 0 ) {
@@ -25,7 +27,7 @@ function loadTodos() {
 // データの保存
 function saveTodos(todos) {
     // JSONファイルに書き込み
-    fs.writeFileSync(FILE,JSON.stringify(todos,null,2));
+    fs.writeFileSync(FILE,JSON.stringify(todos,null,2),CHARSET);
 }
 
 module.exports = {FILE, loadTodos, saveTodos};

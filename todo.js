@@ -5,7 +5,7 @@ const { addTodos, listTodos, doneTodos, deleteTodos} = require('./commands')
 
 // 初期化
 if(!fs.existsSync(fileManager.FILE)) {
-    fs.writeFileSync(fileManager.FILE,JSON.stringify([]));
+    fs.writeFileSync(fileManager.FILE,JSON.stringify([]),fileManager.CHARSET);
 }
 
 // commanderの定義
