@@ -17,8 +17,8 @@ function loadTodos() {
 
         return result;
     } catch (e) {
-        console.log("データの読み込みに失敗しました。処理を終了します。" + e.message);
-        process.exit();
+        console.error("データの読み込みに失敗しました。処理を終了します。" + e.message);
+        process.exit(1);
     }
 }
 
