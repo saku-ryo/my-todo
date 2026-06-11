@@ -26,8 +26,13 @@ function loadTodos() {
 
 // データの保存
 function saveTodos(todos) {
-    // JSONファイルに書き込み
-    fs.writeFileSync(FILE,JSON.stringify(todos,null,2),CHARSET);
+    try {
+        // JSONファイルに書き込み
+        fs.writeFileSync(FILE,JSON.stringify(todos,null,2),CHARSET);
+    } catch (e) {
+        console.error("データの書き込みに失敗しました。処理を終了します。" + e.message);
+        process.exit(1);
+    }
 }
 
 module.exports = {FILE, loadTodos, saveTodos};
