@@ -17,7 +17,13 @@ function loadTodos() {
             result =  JSON.parse(fileInfo);
         }
 
-        return result;
+        if(Array.isArray(result)) {
+            return result;
+        } else {
+            console.log("データ形式が配列ではありません。");
+            return[];
+        }
+
     } catch (e) {
         console.error("データの読み込みに失敗しました。処理を終了します。" + e.message);
         process.exit(1);
