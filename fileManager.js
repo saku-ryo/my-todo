@@ -20,8 +20,7 @@ function loadTodos() {
         if(Array.isArray(result)) {
             return result;
         } else {
-            console.log("データ形式が配列ではありません。");
-            throw e;
+            throw new Error("データ形式が配列ではありません。");
         }
 
     } catch (e) {
