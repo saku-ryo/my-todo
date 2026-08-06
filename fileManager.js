@@ -21,7 +21,7 @@ function loadTodos() {
             return result;
         } else {
             console.log("データ形式が配列ではありません。");
-            return[];
+            throw e;
         }
 
     } catch (e) {
