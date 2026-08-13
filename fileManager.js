@@ -17,8 +17,13 @@ function loadTodos() {
             result =  JSON.parse(fileInfo);
         }
 
+        // JSONデータが配列かどうかを判定
         if(Array.isArray(result)) {
-            return result;
+            // 有効なオブジェクトの配列を作成（null）を排除する
+            const validTodos = result.filter(
+                item => typeof item === 'object' && item !== null && !Array.isArray(item)
+            );
+            return validTodos;
         } else {
             throw new Error("データ形式が配列ではありません。");
         }
